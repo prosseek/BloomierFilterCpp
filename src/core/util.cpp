@@ -25,23 +25,6 @@ void Util::addAll(std::vector<T>& aList, const std::vector<T> bList)
 // specialization
 template void Util::addAll<int>(std::vector<int>&, const std::vector<int>);
 
-/**
-* Remove all the elements in bList from aList
-*/
-// template <class T>
-// void removeAll(std::vector<T>& aList, const std::vector<T> bList)
-// {
-//     for (auto it = bList.begin(); it != bList.end(); ++it)
-//     {
-//         auto pointer = std::find(aList.begin(), aList.end(), *it);
-//         if (pointer != aList.end()) {
-//             aList.erase(pointer);
-//         }
-//         //aList.remove(*it);
-//     }
-// }
-//template void removeAll<int>(std::vector<int>&, const std::vector<int>);
-
 template <class T1, class T2>
 void Util::removeAll(std::map<T1, T2>& aMap, const std::vector<T2> bList)
 {
@@ -61,5 +44,21 @@ void Util::removeAll(std::map<T1, T2>& aMap, const std::vector<T2> bList)
     }
 }
 template void Util::removeAll(std::map<std::string, int>& , const std::vector<int>);
+
+void Util::byteArrayXor(unsigned char result[], const unsigned char input[])
+{
+    int size = std::min(sizeof(result)/sizeof(unsigned char), sizeof(input)/sizeof(unsigned char));
+
+    for (int i = 0; i < size; i++)
+    {
+        result[i] = result[i] ^ input[i];
+    }
+}
+
+int Util::getByteSize(int value)
+{
+    // return q//8 + (1 if q % 8 != 0 else 0
+    return value / 8 + (value % 8 == 0 ? 0 : 1);
+}
 
 } // namespace

@@ -35,9 +35,7 @@ class UtilTest : public QuickTest {
 
 
 TEST_F(UtilTest, addAll) {
-    std::vector<int> aList = {10, 20, 30, 40}; // aggreagate initializer doesn't work with C++/C++ 11
-    //std::map<std::string, int> aMap = {{"abc",10}};
-    //aList.push_back(10); aList.push_back(20); aList.push_back(30); aList.push_back(40);
+    std::vector<int> aList = {10, 20, 30, 40}; 
     bList.push_back(100); bList.push_back(200);
     EXPECT_EQ(4, aList.size());
     bloomier::Util::addAll(aList, bList);
@@ -54,3 +52,19 @@ TEST_F(UtilTest, removeAll) {
     EXPECT_EQ(120, aMap["def"]);
 }
 
+TEST_F(UtilTest, byteArrayXor) {
+    unsigned char a[] = {0x00, 0xFF, 0xFF};
+    unsigned char b[] = {0xFF, 0xFF, 0x00, 0xFF};
+    unsigned char expected[] = {0xFF, 0x00, 0xFF};
+    bloomier::Util::byteArrayXor(a, b);
+    for (int i = 0; i < 3; i++)
+        EXPECT_EQ(a[i], expected[i]);
+}
+
+TEST_F(UtilTest, getByteSize) {
+    unsigned char a[] = {8, 10, 12, 16};
+    unsigned char expected[] = {1,2,2,2};
+
+    for (int i = 0; i < sizeof(a)/sizeof(unsigned char); i++)
+        EXPECT_EQ(bloomier::Util::getByteSize(a[i]), expected[i]);
+}
