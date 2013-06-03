@@ -39,8 +39,8 @@ public:
      * @param std::map<T1, T2> map
      * @param std::vector<T> vectorA
      */
-    template <class T1, class T2>
-    static void removeAll(std::map<T1, T2>&, const std::vector<T2>);
+    template <class T1, class T2, class T3>
+    static void removeAll(std::map<T1, T2>&, const std::vector<T3>);
     
     /**
      * For all the elements in the arrays:

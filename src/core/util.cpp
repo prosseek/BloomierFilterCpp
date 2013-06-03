@@ -25,8 +25,8 @@ void Util::addAll(std::vector<T>& aList, const std::vector<T> bList)
 // specialization
 template void Util::addAll<int>(std::vector<int>&, const std::vector<int>);
 
-template <class T1, class T2>
-void Util::removeAll(std::map<T1, T2>& aMap, const std::vector<T2> bList)
+template <class T1, class T2, class T3>
+void Util::removeAll(std::map<T1, T2>& aMap, const std::vector<T3> bList)
 {
     std::list<T1> keys;
     // 1. get all the keys that has the elements from bList
@@ -34,7 +34,7 @@ void Util::removeAll(std::map<T1, T2>& aMap, const std::vector<T2> bList)
     {
         for (auto j = aMap.begin(); j != aMap.end(); ++j)
         {
-            if (j->second == *it) keys.push_back(j->first);
+            if (j->first == *it) keys.push_back(j->first);
         }
     }
     // 2. remove all the items of the key
@@ -43,7 +43,7 @@ void Util::removeAll(std::map<T1, T2>& aMap, const std::vector<T2> bList)
         aMap.erase(*it);
     }
 }
-template void Util::removeAll(std::map<std::string, int>& , const std::vector<int>);
+template void Util::removeAll(std::map<std::string, int>& , const std::vector<std::string>);
 
 void Util::byteArrayXor(unsigned char result[], const unsigned char input[])
 {

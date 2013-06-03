@@ -44,12 +44,13 @@ TEST_F(UtilTest, addAll) {
 
 TEST_F(UtilTest, removeAll) {
     aMap["abc"] = 10; aMap["def"] = 120; aMap["xyz"] = 40;
-    aList.push_back(10); aList.push_back(20); aList.push_back(30); aList.push_back(40);
+    std::vector<std::string> aList = {"abc", "def"};
+    //aList.push_back(10); aList.push_back(20); aList.push_back(30); aList.push_back(40);
     // bList.push_back(10); bList.push_back(20);
     EXPECT_EQ(3, aMap.size());
     bloomier::Util::removeAll(aMap, aList);
     EXPECT_EQ(1, aMap.size());
-    EXPECT_EQ(120, aMap["def"]);
+    EXPECT_EQ(40, aMap["xyz"]);
 }
 
 TEST_F(UtilTest, byteArrayXor) {

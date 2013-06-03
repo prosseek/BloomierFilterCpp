@@ -1,6 +1,7 @@
 cmake_minimum_required(VERSION 2.8)
 project( bloomier )
 
+# cmake -DCMAKE_BUILD_TYPE:STRING=Debug ../src
 # http://www.cmake.org/Wiki/CMake_Useful_Variables#Compilers_and_Tools
 set(CMAKE_CXX_FLAGS_DEBUG, ON)
 set(CMAKE_CXX_COMPILER "/opt/local/bin/g++-mp-4.8")
@@ -16,9 +17,17 @@ link_directories(/usr/local/lib)
 
 set(bloomier_srcs 
     main.cpp 
+    
+    # bloomier filter code
     bloomierfilter.cpp 
     core/util.cpp
+    core/utilEncode.cpp
+    core/singletonFindingTweaker.cpp
+    
+    # test code
     test/testutil.cc
+    test/testUtilEncode.cc
+    test/testSingletonFindingTweaker.cc
     )
     
 add_executable(bl ${bloomier_srcs})
