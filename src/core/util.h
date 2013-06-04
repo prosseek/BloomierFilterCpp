@@ -12,7 +12,12 @@
 
 #include <iostream>
 #include <list>
+#include <set>
 #include <algorithm>
+#include <vector>
+#include <map>
+#include <string>
+
 namespace bloomier {
     
 /**
@@ -56,6 +61,14 @@ public:
      *  return q//8 + (1 if q % 8 != 0 else 0)
      */ 
     static int getByteSize(int value);
+    
+    /**
+     * Check if value is in the setArray
+     *
+     * @param set<int> setArray
+     * @param int value
+     */
+    static bool in(std::set<int> setArray, int value);
 };
 }
 

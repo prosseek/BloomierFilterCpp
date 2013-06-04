@@ -22,11 +22,15 @@ set(bloomier_srcs
     bloomierfilter.cpp 
     core/util.cpp
     core/utilEncode.cpp
+    core/hash.cpp
+    core/bloomierHasher.cpp
     core/singletonFindingTweaker.cpp
     
     # test code
     test/testutil.cc
     test/testUtilEncode.cc
+    test/testHash.cc
+    test/testBloomierHasher.cc
     test/testSingletonFindingTweaker.cc
     )
     

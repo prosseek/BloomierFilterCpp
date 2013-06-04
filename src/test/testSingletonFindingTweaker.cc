@@ -4,7 +4,11 @@
 #include <list>
 #include <map>
 #include <string>
-#include "Util.h"
+#include "bloomierHasher.h"
+#include "singletonFindingTweaker.h"
+
+using namespace bloomier;
+using namespace std;
 
 class QuickTest : public testing::Test {
  protected:
@@ -25,8 +29,16 @@ class SingletonFindingTweakerTest : public QuickTest {
   }
 };
 
-
-TEST_F(SingletonFindingTweakerTest, addAll) {
+TEST_F(SingletonFindingTweakerTest, tweakTest) {
+    int hash = 0; int m = 10; int k = 5; int q = 5;
+    auto h = new BloomierHasher(hash, m, k, q);
+    map<string, int> mp; mp["abc"] = 10; mp["def"] = 20; mp["abd"] = 30;
+    unsigned char result[k];
+    auto s = new SingletonFindingTweaker(mp, h);
+    s->tweak("abc");
+    delete h;
+    delete s;
+    
     // std::vector<int> aList = {10, 20, 30, 40}; 
     // bList.push_back(100); bList.push_back(200);
     // EXPECT_EQ(4, aList.size());

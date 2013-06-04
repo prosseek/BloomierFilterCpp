@@ -69,3 +69,11 @@ TEST_F(UtilTest, getByteSize) {
     for (int i = 0; i < sizeof(a)/sizeof(unsigned char); i++)
         EXPECT_EQ(bloomier::Util::getByteSize(a[i]), expected[i]);
 }
+
+TEST_F(UtilTest, inTest) {
+    // auto s = new SingletonFindingTweaker(null, null);
+    std::set<int> values;
+    values.insert(10); values.insert(20); values.insert(30);
+    EXPECT_TRUE(bloomier::Util::in(values, 10));
+    EXPECT_FALSE(bloomier::Util::in(values, 50));
+}

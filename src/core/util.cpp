@@ -5,10 +5,6 @@
 // To change the template use AppCode | Preferences | File Templates.
 //
 
-#include <vector>
-#include <map>
-#include <string>
-#include <algorithm>    // std::find
 #include "Util.h"
 
 namespace bloomier {
@@ -60,5 +56,17 @@ int Util::getByteSize(int value)
     // return q//8 + (1 if q % 8 != 0 else 0
     return value / 8 + (value % 8 == 0 ? 0 : 1);
 }
+
+bool Util::in(std::set<int> setArray, int value)
+{
+    auto it = setArray.find(value);
+    if (it == setArray.end()) // not found
+        return false;
+    else
+        return true;
+}
+
+
+
 
 } // namespace
