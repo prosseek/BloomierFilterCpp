@@ -25,6 +25,7 @@ set(bloomier_srcs
     core/hash.cpp
     core/bloomierHasher.cpp
     core/singletonFindingTweaker.cpp
+    core/orderAndMatchFinder.cpp
     
     # test code
     test/testutil.cc
@@ -32,6 +33,7 @@ set(bloomier_srcs
     test/testHash.cc
     test/testBloomierHasher.cc
     test/testSingletonFindingTweaker.cc
+    test/orderAndMatchFinder.cc
     )
     
 add_executable(bl ${bloomier_srcs})

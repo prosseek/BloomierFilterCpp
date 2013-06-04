@@ -19,6 +19,7 @@ void Util::addAll(std::vector<T>& aList, const std::vector<T> bList)
     }
 }
 // specialization
+template void Util::addAll<std::string>(std::vector<std::string>&, const std::vector<std::string>);
 template void Util::addAll<int>(std::vector<int>&, const std::vector<int>);
 
 template <class T1, class T2, class T3>
@@ -66,7 +67,24 @@ bool Util::in(std::set<int> setArray, int value)
         return true;
 }
 
+template <class T>
+bool Util::in(std::vector<T> vectorArray, T value)
+{
+    auto it = find(vectorArray.begin(), vectorArray.end(), value);
+    if (it == vectorArray.end()) return false;
+    return true;
+}
+template bool Util::in(std::vector<int> vectorArray, int value);
+template bool Util::in(std::vector<std::string> vectorArray, std::string value);
 
+void Util::deepcopy(const std::map<std::string, int> source, std::map<std::string, int>& dest)
+{
+    for (auto it = source.begin(); it != source.end(); ++it)
+    {
+        //std::cout << it->first << ":" << it->second << std::endl;
+        dest[it->first] = it->second;
+    }
+}
 
 
 } // namespace

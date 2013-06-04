@@ -70,10 +70,33 @@ TEST_F(UtilTest, getByteSize) {
         EXPECT_EQ(bloomier::Util::getByteSize(a[i]), expected[i]);
 }
 
-TEST_F(UtilTest, inTest) {
+TEST_F(UtilTest, inSetTest) {
     // auto s = new SingletonFindingTweaker(null, null);
     std::set<int> values;
     values.insert(10); values.insert(20); values.insert(30);
     EXPECT_TRUE(bloomier::Util::in(values, 10));
     EXPECT_FALSE(bloomier::Util::in(values, 50));
+}
+
+TEST_F(UtilTest, inVectorTest) {
+    // auto s = new SingletonFindingTweaker(null, null);
+    std::vector<int> values;
+    values.push_back(10); values.push_back(20); values.push_back(30);
+    EXPECT_TRUE(bloomier::Util::in(values, 10));
+    EXPECT_FALSE(bloomier::Util::in(values, 50));
+}
+
+TEST_F(UtilTest, deepcopy) {
+    // auto s = new SingletonFindingTweaker(null, null);
+    std::map<std::string, int> source;
+    source["abc"] = 10; source["def"] = 20; source["xyz"] = 30;
+    std::map<std::string, int> dest;
+    
+    //std::cout << dest["abc"] << std::endl;
+    
+    bloomier::Util::deepcopy(source, dest);
+    source.clear();
+    EXPECT_TRUE(dest["abc"] == 10);
+    EXPECT_TRUE(dest["def"] == 20);
+    EXPECT_TRUE(dest["xyz"] == 30);
 }

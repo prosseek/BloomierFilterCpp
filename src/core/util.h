@@ -69,6 +69,14 @@ public:
      * @param int value
      */
     static bool in(std::set<int> setArray, int value);
+    template <class T> 
+    static bool in(std::vector<T> vectorArray, T value);
+    
+    /**
+     * deepcopy from source to dest
+     */
+    static void deepcopy(const std::map<std::string, int> source, std::map<std::string, int>& dest);
+    
 };
 }
 
