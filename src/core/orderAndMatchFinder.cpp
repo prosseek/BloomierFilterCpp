@@ -5,7 +5,7 @@
 namespace bloomier 
 {
 
-OrderAndMatchFinder::OrderAndMatchFinder(int hashSeed, std::map<std::string, int>& keyMap, int m, int k, int q, int maxTry)
+OrderAndMatchFinder::OrderAndMatchFinder(int hashSeed, std::map<std::string, int>* keyMap, int m, int k, int q, int maxTry)
 {
     this->hashSeed = hashSeed;
     this->keyMap = keyMap;
@@ -58,7 +58,7 @@ bool OrderAndMatchFinder::findMatch(std::map<std::string, int>& remainingKeysDic
 OrderAndMatch* OrderAndMatchFinder::find()
 {
     std::map<std::string, int> copied;
-    Util::deepcopy(this->keyMap, copied);
+    Util::deepcopy(*(this->keyMap), copied);
     
     for (int i = 0; i < maxTry; i++)
     {

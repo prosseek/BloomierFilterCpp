@@ -33,7 +33,8 @@ set(bloomier_srcs
     test/testHash.cc
     test/testBloomierHasher.cc
     test/testSingletonFindingTweaker.cc
-    test/orderAndMatchFinder.cc
+    test/testOrderAndMatchFinder.cc
+    test/testBloomierFilter.cc
     )
     
 add_executable(bl ${bloomier_srcs})

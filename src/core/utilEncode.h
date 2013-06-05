@@ -27,7 +27,7 @@ public:
      *  @param width : the width of array, the array is just a pointer that has no size info.
      *                 You need to add this infomration also.
      */
-     static void encode(int value, unsigned char array[], int width);
+     static void encode(int value, int width, unsigned char array[]);
      
     /*
      * Given array with size width, returns the value.

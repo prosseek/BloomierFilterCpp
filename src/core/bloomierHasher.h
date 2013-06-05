@@ -13,7 +13,7 @@ class BloomierHasher
 public:
     BloomierHasher(int hashSeed, int m, int k, int q) : hashSeed(hashSeed), m(m), k(k), q(q) {}
     void getNeighborhood(std::string key, unsigned char array[]);
-    void getM(std::string key, unsigned char array[]);
+    void getM(std::string key, unsigned char array[], int byteSize);
     
     // get method
     int getm() {return m;}

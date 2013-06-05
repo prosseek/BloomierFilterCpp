@@ -3,7 +3,7 @@
 namespace bloomier {
 //using namespace std;
     
-void UtilEncode::encode(int value, unsigned char array[], int length) 
+void UtilEncode::encode(int value, int length, unsigned char array[]) 
 {
     int size_value = sizeof value;
     unsigned char bytes[size_value];

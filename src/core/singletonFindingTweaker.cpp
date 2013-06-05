@@ -39,14 +39,16 @@ SingletonFindingTweaker::SingletonFindingTweaker(map<string, int> keyMap, Bloomi
 
 int SingletonFindingTweaker::tweak(std::string key)
 {
+    int k = h->getk();
     //  void getNeighborhood(std::string key, unsigned char array[]);
-    unsigned char result[h->getk()];
+    unsigned char result[k];
     h->getNeighborhood(key, result);
     
-    for (int i = 0; i < h->getk(); i++)
+    //Util::print(result, k);
+    for (int i = 0; i < k; i++)
     {
         //std::cout << i << ":" << int(result[i]) << std::endl;
-        if (Util::in(nonSingletons, int(result[i])))
+        if (!Util::in(nonSingletons, int(result[i])))
             return i; // result[i];
     }
     // return -1 means not found

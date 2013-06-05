@@ -34,7 +34,7 @@ TEST_F(UtilEncodeTest, encode) {
     unsigned char expected[] = {232, 3, 0, 0, 0};
     unsigned char array[] = {0, 0, 0, 0, 0};
     int width = sizeof(array)/sizeof(unsigned char);
-    bloomier::UtilEncode::encode(value, array, width);
+    bloomier::UtilEncode::encode(value, width, array); // , width);
     for (int i = 0; i < width; i++) {
         EXPECT_EQ(array[i], expected[i]);
     }
@@ -45,7 +45,7 @@ TEST_F(UtilEncodeTest, encode) {
     unsigned char array2[] = {0};
     width = sizeof(array2)/sizeof(unsigned char);
     // std::cout << "***" << width << std::endl; 
-    bloomier::UtilEncode::encode(value, array2, width);
+    bloomier::UtilEncode::encode(value, width, array2); //, width);
     for (int i = 0; i < width; i++) {
         EXPECT_EQ(array2[i], expected2[i]);
     }

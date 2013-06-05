@@ -54,7 +54,10 @@ public:
      * @param unsigned char result
      * @param unsigned char input
      */
-    static void byteArrayXor(unsigned char result[], const unsigned char input[]);
+    //static void byteArrayXor(unsigned char result[], const unsigned char input[]);
+    static void byteArrayXor(unsigned char* result, const unsigned char* input, int byteSize);
+    
+    static void setInArray(unsigned char* result, const unsigned char* input, int byteSize);
     
     /** 
      * get the "byte" size when given "bit" size
@@ -77,6 +80,14 @@ public:
      */
     static void deepcopy(const std::map<std::string, int> source, std::map<std::string, int>& dest);
     
+    template <class T>
+    static void print(std::vector<T>* vectorArray);
+    
+    template <class T>
+    static void print(std::vector<T> vectorArray);
+    
+    template <class T>
+    static void print(T* array, int size);
 };
 }
 

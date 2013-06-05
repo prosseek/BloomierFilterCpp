@@ -35,7 +35,7 @@ TEST_F(OrderAndMatchFinderTest, findTest) {
     map<string, int> mp; mp["abc"] = 10; mp["def"] = 20; mp["abd"] = 30;
     vector<string> keys = {"abc", "def", "abd"};
     
-    auto oamf = new bloomier::OrderAndMatchFinder(hash, mp, m, k, q);
+    auto oamf = new bloomier::OrderAndMatchFinder(hash, &mp, m, k, q);
     auto oam = oamf->find();
     
     auto tauList = oam->getTauList();

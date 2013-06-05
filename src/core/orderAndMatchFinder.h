@@ -12,7 +12,7 @@ namespace bloomier {
 class OrderAndMatchFinder
 {
     int hashSeed;
-    std::map<std::string, int> keyMap;
+    std::map<std::string, int>* keyMap;
     int m;
     int k;
     int q;
@@ -22,7 +22,7 @@ class OrderAndMatchFinder
     BloomierHasher *h = NULL;
     OrderAndMatch *oa = NULL;
 public:
-    OrderAndMatchFinder(int hashSeed, std::map<std::string, int>&, int m, int k, int q, int maxTry = 10);
+    OrderAndMatchFinder(int hashSeed, std::map<std::string, int>*, int m, int k, int q, int maxTry = 10);
     ~OrderAndMatchFinder();
     
     /**

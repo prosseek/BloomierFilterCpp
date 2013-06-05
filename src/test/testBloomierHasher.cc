@@ -45,7 +45,7 @@ TEST_F(BloomierHasherTest, getM) {
     int m = 100; int k = 5;
     b = new BloomierHasher(10, m, k, 9);
     unsigned char result[k];
-    b->getM("keyValue", result);
+    b->getM("keyValue", result, k);
     for (int i = 0; i < k; i++) {
         //std::cout << std::hex << int(result[i]) << std::endl;
         // It's for debugging purposes

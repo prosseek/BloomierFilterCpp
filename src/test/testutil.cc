@@ -53,11 +53,29 @@ TEST_F(UtilTest, removeAll) {
     EXPECT_EQ(40, aMap["xyz"]);
 }
 
-TEST_F(UtilTest, byteArrayXor) {
+TEST_F(UtilTest, byteArrayXor1) {
     unsigned char a[] = {0x00, 0xFF, 0xFF};
     unsigned char b[] = {0xFF, 0xFF, 0x00, 0xFF};
     unsigned char expected[] = {0xFF, 0x00, 0xFF};
-    bloomier::Util::byteArrayXor(a, b);
+    bloomier::Util::byteArrayXor(a, b, 3);
+    for (int i = 0; i < 3; i++)
+        EXPECT_EQ(a[i], expected[i]);
+}
+
+TEST_F(UtilTest, byteArrayXor2) {
+    unsigned char a[] =       {0xFF, 0xFF, 0xFF};
+    unsigned char b[] = {0x00, 0xFF, 0x00, 0xFF, 0x00};
+    unsigned char expected[] = {0x00, 0xFF, 0x00};
+    bloomier::Util::byteArrayXor(a, b + 1, 3);
+    for (int i = 0; i < 3; i++)
+        EXPECT_EQ(a[i], expected[i]);
+}
+
+TEST_F(UtilTest, setInArray) {
+    unsigned char a[] =       {0xFF, 0xFF, 0xFF};
+    unsigned char b[] = {0x00, 0xFF, 0x00, 0xFF, 0x00};
+    unsigned char expected[] = {0xFF, 0x00, 0xFF};
+    bloomier::Util::setInArray(a, b + 1, 3);
     for (int i = 0; i < 3; i++)
         EXPECT_EQ(a[i], expected[i]);
 }

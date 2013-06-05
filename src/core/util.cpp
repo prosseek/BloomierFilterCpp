@@ -42,15 +42,32 @@ void Util::removeAll(std::map<T1, T2>& aMap, const std::vector<T3> bList)
 }
 template void Util::removeAll(std::map<std::string, int>& , const std::vector<std::string>);
 
-void Util::byteArrayXor(unsigned char result[], const unsigned char input[])
+void Util::byteArrayXor(unsigned char* result, const unsigned char* input, int size)
 {
-    int size = std::min(sizeof(result)/sizeof(unsigned char), sizeof(input)/sizeof(unsigned char));
+    //int size = std::min(sizeof(result)/sizeof(unsigned char), sizeof(input)/sizeof(unsigned char));
 
     for (int i = 0; i < size; i++)
     {
         result[i] = result[i] ^ input[i];
     }
 }
+
+void Util::setInArray(unsigned char* result, const unsigned char* input, int size)
+{
+    for (int i = 0; i < size; i++)
+    {
+        result[i] = input[i]; // ^ input[i];
+    }
+}
+
+// void Util::byteArrayXor(unsigned char result[], const unsigned char* input, int byteSize)
+// {
+//     for (int i = 0; i < byteSize; i++)
+//     {
+//         unsigned char value = input[i];
+//         result[i] = result[i] ^ value;
+//     }
+// }
 
 int Util::getByteSize(int value)
 {
@@ -86,5 +103,43 @@ void Util::deepcopy(const std::map<std::string, int> source, std::map<std::strin
     }
 }
 
+// debugging functions
+template <class T>
+void Util::print(std::vector<T>* vectorArray)
+{
+    for (auto i = vectorArray->begin(); i != vectorArray->end(); ++i)
+    {
+        std::cout << *i << ":";
+    }
+    std::cout << std::endl;
+}
+template void Util::print(std::vector<int>* vectorArray);
+template void Util::print(std::vector<std::string>* vectorArray);
+  
+template <class T>
+void Util::print(std::vector<T> vectorArray)
+{
+    for (auto i = vectorArray.begin(); i != vectorArray.end(); ++i)
+    {
+        std::cout << *i << ":";
+    }
+    std::cout << std::endl;
+}
+template void Util::print(std::vector<int> vectorArray);
+template void Util::print(std::vector<std::string> vectorArray);
+
+template <class T>
+void Util::print(T* array, int size)
+{
+    std::cout << "ARRAY PRINT:" << size << "<";
+    for (int i = 0; i < size; i++)
+    {
+        std::cout << int(array[i]) << ":";
+    }
+    std::cout << std::endl;
+}
+template void Util::print(int* vectorArray, int);
+//template void Util::print(std::string* vectorArray, int);
+template void Util::print(unsigned char* vectorArray, int);
 
 } // namespace
